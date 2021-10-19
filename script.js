@@ -105,10 +105,11 @@ function newpage(element) {
 
 //document.querySelector("#name").addEventListener("click",clickhandler);
 ////////////////////auth-watcher////////////////////
+
 const auth = fbauth.getAuth();
 fbauth.onAuthStateChanged(auth, (user) => {
   let online = rtdb.child(titleRef, `/online`);
-  if (user) {
+  if (user.displayName) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     uid = user.uid;
@@ -174,9 +175,9 @@ rtdb.onValue(chat, (data) => {
 //#######################updating channels######################
 function goto(element){
   let next_channel = $(element.currentTarget).text();
-  let owner = $(element.currentTarget).attr('data-id');
+  let owner = $(element.currentTarget).attr('data-idb');
   console.log('here',next_channel);
-  chat = rtdb.child(titleRef, `/groups/${owner}/messages`);
+  chat = rtdb.child(titleRef, `/groups/${next_channel+owner}/messages`);
   chat_app = next_channel;
   chat_id = owner;
   update();
@@ -191,7 +192,7 @@ rtdb.onValue(channels, (data) => {
   for(const element in chatlist) {
     //console.log(data,data.val()[element]);
     let owner = chatlist[element];
-    $('#your_channels').append(`<div class='chn${owner===true?" own":" not_own"}' ${owner===true?"data-id="+element+uid:"data-id="+element+owner}>${element}</div>`);
+    $('#your_channels').append(`<div class='chn${owner===true?" own":" not_own"}' ${owner===true?"data-ida="+element +" data-idb="+uid:"data-ida="+element +" data-idb="+owner}>${element}</div>`);
     $('.chn').off('click');
     $(".chn").click(goto);
 
@@ -321,7 +322,8 @@ function register(){
             })
         console.log($("createusername").val())
         let userdata = rtdb.child(titleRef, `/users/${user.uid}`);
-        rtdb.update(userdata,{'channels':{chatapp:false}});
+        rtdb.update(userdata,{'channels':{chatapp:chat_id}});
+        location.reload(true);
         // ...
       })
       .catch((error) => {
