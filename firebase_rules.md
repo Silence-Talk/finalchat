@@ -1,5 +1,5 @@
-# finalchat
-#firebase rules
+
+firebase rules
 {
 	"rules":{"users":
   	{"$userid":
