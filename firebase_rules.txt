@@ -1,4 +1,3 @@
-
 firebase rules
 {
 	"rules":{"users":
