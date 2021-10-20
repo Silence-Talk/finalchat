@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - final work</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!html>
+  <head>
+
+  <body>
+    <div class="form1">
+      <p id="heading">Enter the #ChatBox.</p>
+
+      <input type="text" name="Name" placeholder="username" id="name" class='input' maxlength="30" required /></br>
+      <input type="password" name="password" placeholder="password" id="userpassword" class='input' maxlength="30" required /></br>
+      <input type="color" name="color" value="#FFFFFF" id="color" /><br>
+      <button id="submit" class="button"><span>Submit</span>
+        <button id="signin" class="button"><span>SignIn</span>
+        </button>
+
+        <div>
+          <p id="heading1">This is a message that I want to spread.</p>
+        </div>
+    </div>
+    <div id='sidebar' class='chatui'><div class='centre' id='your_channels'>Channel Name<br></div><br>
+      <div class='centre' id='contacts'>Users<br></div>
+    </div>
+    <div class="chatbox chatui">
+      <button id='create_channel'>Create channel</button><span id='enter_channel'></span>
+      <button id='signout' style='left:20px; float:right;'>Signout</button>
+      <div>
+        <p id="heading2">Welcome to the Chatbox</p>
+        <div id="chats">
+          <li>Placeholder</li>
+        </div></br>
+        
+      </div>
+        <input type="text" name="message" placeholder="message" id="chat" maxlength="100" required />
+        <button id="send" class="button"> <span>Send</span></button>
+    </div>
+  </body>
+  </head>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js'></script><script type="module" src="./script.js"></script>
+
+</body>
+</html>
