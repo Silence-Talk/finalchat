@@ -345,7 +345,7 @@ function register(){
         console.log(displayname,email,password,'user created')
       }else
       {
-        alert('Requirement not satisfied');
+        alert('Requirement not satisfied. Remember Password length should be 8 character long with atleast, 1 uppercase character,1 lowercase character, one special character and numbers ');
       }
  })//create_user.bind(this,email,password)  
   
@@ -378,9 +378,14 @@ function adduser(){
   }
   
   //console.log('add');
-  let group_metadata = rtdb.child(titleRef, `/groups/${chat_id}/metadata/members`);
+  let group_metadata = rtdb.child(titleRef, `/groups/${chat_app+chat_id}/metadata/members`);
   //console.log('add');
-  rtdb.update(group_metadata,{[friend]:true});
+  for(let fr of friend){
+    rtdb.update(group_metadata,{[fr]:true});
+    //console.log(fr,chat_id,`/groups/${chat_app+chat_id}/metadata/members`);
+  }
+    
+  
   alert(friend,' added');
 }
 
@@ -391,7 +396,7 @@ function removeuser(){
   for(const ele in element){
     if(element[ele].checked){  
       friend = $(element[ele]).attr('data-id');
-      rtdb.child(titleRef, `/groups/${chat_id}/metadata/members/${friend}`).remove();
+      rtdb.child(titleRef, `/groups/${chat_app+chat_id}/metadata/members/${friend}`).remove();
       console.log('frn',friend);
     }
     
