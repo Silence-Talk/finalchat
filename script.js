@@ -345,7 +345,7 @@ function register(){
         console.log(displayname,email,password,'user created')
       }else
       {
-        alert('Requirement not satisfied. Remember Password length should be 8 character long with atleast, 1 uppercase character,1 lowercase character, one special character and numbers ');
+        alert('Requirement not satisfied. Remember Password length should be atleast 8 character long with atleast, 1 uppercase character,1 lowercase character, one special character and numbers ');
       }
  })//create_user.bind(this,email,password)  
   
